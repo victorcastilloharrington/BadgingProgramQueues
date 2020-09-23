@@ -1,0 +1,35 @@
+const dotenv = require('dotenv')
+dotenv.config({ path: './config.env' })
+const email = require('./utils/email')
+
+const data = {
+  to: 'victor.castillo@fulltimeforce.com',
+  subject: 'Badge Reservation Successful',
+  template: 'order',
+  templateData: {
+    type: 'bc',
+    badge: 'Climate Helper',
+    price: 282340,
+    tonnes: 23528.28411,
+    name: 'Victorius',
+    order: 134,
+    date: '9/22/2020',
+    projects: ['Guatemala Conservation Coast'],
+    extras: []
+  },
+  attachments: [
+    {
+      filename: 'dttest.pdf',
+      content: 'JVBERi0xLjMKJf////8KNyAwIG9iago8PAovVHlwZSAvUGFnZQovUGFyZW50IDEgMCBSCi9NZWRpYUJveCBbMCAwIDYxMiA3OTJdCi9Db250ZW50cyA1IDAgUgovUmVzb3VyY2VzIDYgMCBSCj4+CmVuZG9iago2IDAgb2JqCjw8Ci9Qcm9jU2V0IFsvUERGIC9UZXh0IC9JbWFnZUIgL0ltYWdlQyAvSW1hZ2VJXQovRm9udCA8PAovRjIgOCAwIFIKL0YxIDkgMCBSCj4+Cj4+CmVuZG9iago1IDAgb2JqCjw8Ci9MZW5ndGggODY3Ci9GaWx0ZXIgL0ZsYXRlRGVjb2RlCj4+CnN0cmVhbQp4nLVXy5IbNwy8z1fwB0wTAAGSVS4dXOUccktZN1cOzkpz8h5y8u+nwdFjYu5aM8laKqk0HA4baDQeopDwfkf4Ko3D0/P098Th+8RCsYVao4bnSWqKtFx8mz5Pf2APDc99PF4WKSwPl6TRcjg+T+9/48ApHOfpy4ecTUs2smZPppY5KWMl2Vz4EN5h24eSDyH9GY6/T5+Oj8EKB5MSifgKRXaDagWH4zZgshXF76cinNgWWDPcb1YATACGHQzLziUXGUz4PgGJKsdWnRM4EFXabWUTMW4rpQhvF1spkLxkq11s5VS0CEwqpjs50driHYUWlGKHwApHCTwAQb4egsJxTkLCIrKXeS0Wa80DjtoZ/uT7+Qg2rt3DF6h9gGE5ktUfMQy+SOq+gLOLfHxh5VTis2SpewGVYlYenBKAuEJkTVzOWSFpzgQ8FidyxOva4UqxskA77Jppt4Wt0lHC/hURV+nALjtBU1DuIRDCi6eRT5ffBaHoeXYLvlqF6MXzz5PhDcSWG0RtI2Ovyy1DbOzfe5FKjUjlXyo4hDOK/Be9MfTGe9GUo9GYQv9TbV6zzcjVxho559vKVrllkpjkR7Vdy6aXTA9tc7n4JS3cnHv9KkYurZIuLlS/dhnuJEcaOgmP5LwurF7FruLaHQwpLXIaas0L8vrLu8a+s81ibkOSbNEV7YVSiUj8N9TUAzxiSKUODVh7j5eeh15xPCNRm9TrzFhjum41IcG19Q5rkVK5rWzVLVfMHcJDmSy9vyKSiN7KsLuQL/bt9J3RnpAUe1vtXhT0pEpbdIm47w0fS4upDVm2qcPuhWKLUsYE26rMMTpdNZYwh7Ti1Q5TJ465rWxVDVWLZcXBurmirfa59N5AUeUgGNzx8L6tngjdx+rI0Ot68mK3t0IQug4Gzl8kKMopsg45sXVkkxfC/ACQS9StPRQzDtbYw+d/Cy42zdib0bBWAey9bHlMcz7hf8OpPz6XroCb+b2mSXEZIOZmHntsVDuBSymySMUboqPpvxjoq7TYgGOLz2AOe63E7PKqAHPbRL7yzPNecihjzhzZ6a8DMgWsnG3Fij3gxDdj5OTZ4AIcEZ6v5ursn5/mA24POiiCVbr7r6sD+YR7btWTw5vqvI6rT3d+Pp/Bf/aTV9z8A6mCDK8KZW5kc3RyZWFtCmVuZG9iagoxMSAwIG9iagooUERGS2l0KQplbmRvYmoKMTIgMCBvYmoKKFBERktpdCkKZW5kb2JqCjEzIDAgb2JqCihEOjIwMjAwOTIyMjEzNTEwWikKZW5kb2JqCjEwIDAgb2JqCjw8Ci9Qcm9kdWNlciAxMSAwIFIKL0NyZWF0b3IgMTIgMCBSCi9DcmVhdGlvbkRhdGUgMTMgMCBSCj4+CmVuZG9iago5IDAgb2JqCjw8Ci9UeXBlIC9Gb250Ci9CYXNlRm9udCAvSGVsdmV0aWNhCi9TdWJ0eXBlIC9UeXBlMQovRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZwo+PgplbmRvYmoKOCAwIG9iago8PAovVHlwZSAvRm9udAovQmFzZUZvbnQgL0hlbHZldGljYS1Cb2xkCi9TdWJ0eXBlIC9UeXBlMQovRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZwo+PgplbmRvYmoKNCAwIG9iago8PAo+PgplbmRvYmoKMyAwIG9iago8PAovVHlwZSAvQ2F0YWxvZwovUGFnZXMgMSAwIFIKL05hbWVzIDIgMCBSCj4+CmVuZG9iagoxIDAgb2JqCjw8Ci9UeXBlIC9QYWdlcwovQ291bnQgMQovS2lkcyBbNyAwIFJdCj4+CmVuZG9iagoyIDAgb2JqCjw8Ci9EZXN0cyA8PAogIC9OYW1lcyBbCl0KPj4KPj4KZW5kb2JqCnhyZWYKMCAxNAowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDE2MDEgMDAwMDAgbiAKMDAwMDAwMTY1OCAwMDAwMCBuIAowMDAwMDAxNTM5IDAwMDAwIG4gCjAwMDAwMDE1MTggMDAwMDAgbiAKMDAwMDAwMDIxOCAwMDAwMCBuIAowMDAwMDAwMTE5IDAwMDAwIG4gCjAwMDAwMDAwMTUgMDAwMDAgbiAKMDAwMDAwMTQxNiAwMDAwMCBuIAowMDAwMDAxMzE5IDAwMDAwIG4gCjAwMDAwMDEyNDMgMDAwMDAgbiAKMDAwMDAwMTE1NyAwMDAwMCBuIAowMDAwMDAxMTgyIDAwMDAwIG4gCjAwMDAwMDEyMDcgMDAwMDAgbiAKdHJhaWxlcgo8PAovU2l6ZSAxNAovUm9vdCAzIDAgUgovSW5mbyAxMCAwIFIKL0lEIFs8ZGYyMzU0MGMxY2JlZjJmMmYyY2Y3ZmNjMmQxNzI0ZmE+IDxkZjIzNTQwYzFjYmVmMmYyZjJjZjdmY2MyZDE3MjRmYT5dCj4+CnN0YXJ0eHJlZgoxNzA1CiUlRU9G',
+      encoding: 'base64'
+    }
+  ]
+}
+
+email(data)
+  .then(res => {
+    console.log(res)
+  })
+  .catch(err => {
+    console.log(err)
+  })
