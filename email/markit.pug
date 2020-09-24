@@ -8,7 +8,11 @@ include _header
 
   //- h3 Order #: #{order}
   //- h3 Date: #{date}
-
+  if(serials)
+    p.purchase Below are your certificate verification links
+    each serial in serials
+      a.purchase(href=serial) #{serial}
+      br
 
 
   p.orderN Note: If you find any certificates with a provisional serial, rest assured we will be fulfilling a complete order in the upcoming weeks and send a complete certificate to you.

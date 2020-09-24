@@ -7,9 +7,11 @@ const certificate = async ({ name, email, retirements }) => {
   // on queue: send email with generated certs
   if (retirements.length > 0) {
     const certs = []
+    const serials = []
 
     for (const retirement of retirements) {
-
+      if (!retirement.serial.startsWith('P-'))
+        serials.push(`https://${process.env.MARKIT_URL}.markit.com/br-reg/public/index.jsp?entity=apiRetirement&name=${retirement.serial}`)
       // const date = .toDateString()
       const date = new Date(retirement.createdAt).toDateString()
       const [, month, day, year] = date.split(' ')
@@ -26,11 +28,11 @@ const certificate = async ({ name, email, retirements }) => {
       certs.push(cert)
     }
 
-    certificateEmail(name, email, certs)
+    certificateEmail(name, email, certs, serials)
   }
 }
 
-const certificateEmail = async (name, email, certs) => {
+const certificateEmail = async (name, email, certs, serials) => {
 
   const options = {
     to: email,
@@ -40,6 +42,9 @@ const certificateEmail = async (name, email, certs) => {
       name: name
     }
   }
+
+  if (serials.length > 0)
+    options.templateData.serials = serials
 
   if (certs) {
     options.attachments = []

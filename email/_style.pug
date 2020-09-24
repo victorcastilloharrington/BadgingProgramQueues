@@ -3,13 +3,13 @@ style.
     width: 700px;
     margin: 0 auto;
   }
-  
+
   img.logo{
     max-width: 140px;
     display: block;
     margin: auto;
   }
-  
+
   h1{
     margin: 0;
     margin-bottom: 1em;
@@ -21,7 +21,7 @@ style.
     font-weight: 400;
     color: #009490;
   }
-  
+
   p{
     color: #676b6f;
     text-align: left;
@@ -30,7 +30,7 @@ style.
     font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
     font-weight: 400;
   }
-  
+
   h3{
     display: block;
     margin: 0 0 24px;
@@ -46,23 +46,31 @@ style.
     text-transform: none;
     color: #6ecbb8;
   }
-  
+
   a,
-  .purchase a {
+  u + #body a{
     font-weight: normal;
-    text-decoration: underline;
-    color: #00a5b5;
   }
-  
+
+  .purchase a,
+  a.purchase,
+  u + #body .purchase a,
+  u + #body a.purchase {
+    font-size: 16px;
+    text-decoration: underline;
+    color: #00a5b5!important;
+    margin-bottom: 24px;
+  }
+
   p.underlined{
     text-decoration: underline;
   }
-  
+
   p.prevN{
     font-weight: bold;
     margin-top: 20px;
   }
-  
+
   .pTable{
     color: #676b6f;
     border: 0;
@@ -77,9 +85,9 @@ style.
     margin-top: 20px;
     margin-bottom: 20px;
   }
-  
-  
-  
+
+
+
   .pTable th,
   .pTable td{
     color: #676b6f;
@@ -93,50 +101,50 @@ style.
     font-size: 16px;
     line-height: 28px;
   }
-  
+
   .pTable th{
     font-weight: bold;
     text-align: left;
   }
-  
+
   .pTable td{
     text-align: right;
-    
+
   }
-  
+
   .support{
     margin-top: 35px;
     margin-bottom: 15px;
   }
-  
+
   .socials{
     background-color: #ffdd00;
     color: #000000;
     font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
     padding: 24px 0;
   }
-  
-  
+
+
   .socials table{
     width: 400px;
     margin: auto;
   }
-  
+
   .socials table td{
     min-width: 33.33%;
     text-align: center;
     vertical-align: middle;
   }
-  
+
   .socials img{
     max-width: 24px;
   }
-  
+
   .socials table td{
     padding-top: 20px;
     padding-bottom: 20px;
   }
-  
+
   .socials a{
     font-weight: normal;
     color: #222;
@@ -144,30 +152,30 @@ style.
     display: inline-block;
     text-decoration: none;
   }
-  
+
   .socials a img{
     max-width: 24px;
     display: inline-block;
     vertical-align: bottom;
   }
-  
+
   .socials a span{
     line-height: 24px;
     padding-left: 5px;
     font-size: 12px;
     font-weight: 400;
   }
-  
+
   .copy{
     text-align: center;
     font-size: 12px;
     color:#000;
   }
-  
+
   .copy a{
     display: inline-block;
   }
-  
+
   .right{
     text-align: right;
   }
