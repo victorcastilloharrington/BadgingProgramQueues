@@ -4,7 +4,10 @@ include _header
       |#{name} 
     |for standing for forests
 
-  p Hi there, your order on Stand For Trees has been completed. Please find your Detailed Report attached
+  p Hi there, your recent badge 
+    if(projects)
+      |reservation 
+    |order on Stand For Trees has been completed. 
 
   h3 Order #: #{order}
   h3 Date: #{date}
@@ -12,8 +15,11 @@ include _header
 
   table.pTable
     tr
-      th Order Type
-      td #{type}
+      th Selected Badge
+      td #{badge}
+    tr
+      th Offset Tonnes of CO2:
+      td #{tonnes}
     tr
       th Total Price
       td #{price}
@@ -29,8 +35,8 @@ include _header
         td
           each extra in extras
             p.right #{extra}
-
-  p.orderN Note: You should find an additional email sent with the carbon credits retirement certificates attached.
+  if(projects)
+    p.orderN Note: You should receive an email with a contract to sign. Once signed you'll receive a payment link with instructions on the last steps of the process.
 
   p.support Thank you for your support.
 

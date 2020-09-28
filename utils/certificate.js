@@ -10,9 +10,9 @@ const certificate = async ({ name, email, retirements }) => {
     const serials = []
 
     for (const retirement of retirements) {
-      if (!retirement.serial.startsWith('P-'))
+      if (!(retirement.serial.startsWith('P-')))
         serials.push(`https://${process.env.MARKIT_URL}.markit.com/br-reg/public/index.jsp?entity=apiRetirement&name=${retirement.serial}`)
-      // const date = .toDateString()
+
       const date = new Date(retirement.createdAt).toDateString()
       const [, month, day, year] = date.split(' ')
       const formattedDate = `${day}/${month}/${year}`
