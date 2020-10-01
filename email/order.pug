@@ -30,6 +30,10 @@ include _header
           each extra in extras
             p.right #{extra}
 
+  if(discount)
+    p.orderN For your purchase you're entitled to a rebate code of $#{discount.value} on your next Business Calculator Badge: 
+    code #{discount.code}
+
   p.orderN Note: You should find an additional email sent with the carbon credits retirement certificates attached.
 
   p.support Thank you for your support.

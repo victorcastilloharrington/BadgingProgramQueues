@@ -79,5 +79,28 @@ exports.detailedReport = (file, content, header, toDisk) => new Promise((resolve
   stream.on('error', () => reject('Error generating pdf'))
 })
 
+exports.quotation = (file, content, header, toDisk) => new Promise((resolve, reject) => {
+  const doc = new PDFDocument
+  const headers = []
+  let finalString = ''
+
+  const stream = doc.pipe(new Base64Encode())
+
+  doc.font('Helvetica')
+
+  doc.font('Helvetica-Bold').fontSize(20).text(header, { underline: true, align: 'center' }).moveDown(2)
+
+  content.forEach(r => {
+    doc.font('Helvetica-Bold').fontSize(16).text(r.title, { underline: false }).moveDown(0.5)
+    doc.fontSize(11).text(`value: ${r.value}`).moveDown(2)
+
+  })
+
+
+  doc.end()
+  stream.on('data', chunk => finalString += chunk)
+  stream.on('end', () => resolve(finalString))
+  stream.on('error', () => reject('Error generating pdf'))
+})
 
 
