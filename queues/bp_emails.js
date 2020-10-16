@@ -1,6 +1,5 @@
 const RSMQ = require('rsmq')
 const RSMQ_Worker = require('rsmq-worker')
-const { parse } = require('flatted')
 
 const email = require('../utils/email')
 const logger = require('../utils/logger')

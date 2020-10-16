@@ -17,12 +17,14 @@ const certificate = async ({ name, email, retirements }) => {
       const [, month, day, year] = date.split(' ')
       const formattedDate = `${day}/${month}/${year}`
 
+      const certId = retirement.serial.startsWith('P-') ? retirement.serial : retirement._id
+
       const cert = await pdf.certificate(
         name,
-        retirement.serial,
+        certId,
         retirement.tonnes,
         formattedDate,
-        `https://widgets.sfo2.digitaloceanspaces.com/assets/${retirement.prj_code}/cert.jpg`,
+        `${process.env.RESOURCES_URL}/${retirement.prj_code}/cert.jpg`,
         false)
 
       certs.push(cert)

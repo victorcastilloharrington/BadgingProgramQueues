@@ -1,10 +1,11 @@
 include _header
+
   h1 Thank you 
     if(name)
       |#{name} 
     |for standing for forests
 
-  p Hi there, your order on Stand For Trees has been completed. Please find your Detailed Report attached
+  p Hi there, your order on Stand For Trees has been completed.
 
   h3 Order #: #{order}
   h3 Date: #{date}
@@ -30,11 +31,21 @@ include _header
           each extra in extras
             p.right #{extra}
 
+  if(badgeUrl)
+    p.orderN You can see the full description of your badge here
+    a.purchase(href=badgeUrl target="_blank") #{type} Badge
+
+
+    p.orderN You can use the following code to embed your badge in your webpage
+    code #{"<a target='_blank' href='"}#{badgeUrl}#{"'><img src='"}#{badgeImage}#{"'/></a>"}
+
   if(discount)
     p.orderN For your purchase you're entitled to a rebate code of $#{discount.value} on your next Business Calculator Badge: 
     code #{discount.code}
 
-  p.orderN Note: You should find an additional email sent with the carbon credits retirement certificates attached.
+
+  unless(discount)
+    p.orderN Note: You should find an additional email sent with the carbon credits retirement certificates attached.
 
   p.support Thank you for your support.
 

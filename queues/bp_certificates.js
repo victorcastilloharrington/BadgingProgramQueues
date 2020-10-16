@@ -1,6 +1,5 @@
 const RSMQ = require('rsmq')
 const RSMQ_Worker = require('rsmq-worker')
-const { parse } = require('flatted')
 
 const certificate = require('../utils/certificate')
 const logger = require('../utils/logger')
@@ -25,6 +24,7 @@ rsmq.createQueue({ qname: "bp_certificates", maxsize: -1 }, function (err, resp)
 
 worker.on("message", function (msg, next, id) {
   // process EMAIL
+  // console.log(msg)
   certificate(JSON.parse(msg))
     .then(res => {
       logger.info(res)
