@@ -13,39 +13,50 @@ include _header
 
   table.pTable
     tr
-      th Order Type
+      th Obtained Badge
       td #{type}
     tr
       th Total Price
       td #{price}
-    if(projects)
+    tr
+      th Tonnes Offset
+      td #{tonnes} CO2e
+    tr
+      th Issued Date
+      td #{issued}
+    tr
+      th Expiry Date
+      td #{expiry}
+
+  if(report)
+  table.pTable
+    tr
+      th Downloadable
+      td Detailed Emissions Report
+
+
+  if(projects)
+    table.pTable
       tr
-        th Projects
-        td
-          each project in projects
-            p.right #{project}
-    if(extras)
-      tr
-        th Extras
-        td
-          each extra in extras
+        th Projects Supported
+        th.right Complimentary Items
+      each project in projects
+        tr
+          td 
+            p.left #{project.name}
+            p.left #{project.country}
+
+          if(project.bundle)
+            p.right Images Bundle
+          each extra in project.extras
             p.right #{extra}
 
-  if(badgeUrl)
-    p.orderN You can see the full description of your badge here
-    a.purchase(href=badgeUrl target="_blank") #{type} Badge
-
-
-    p.orderN You can use the following code to embed your badge in your webpage
-    code #{"<a target='_blank' href='"}#{badgeUrl}#{"'><img src='"}#{badgeImage}#{"'/></a>"}
+  p.orderN You can access your badge details and donwloadables by login with your badging program account details 
+    a.purchase(href=accountUrl target="_blank") here
 
   if(discount)
     p.orderN For your purchase you're entitled to a rebate code of $#{discount.value} on your next Business Calculator Badge: 
     code #{discount.code}
-
-
-  unless(discount)
-    p.orderN Note: You should find an additional email sent with the carbon credits retirement certificates attached.
 
   p.support Thank you for your support.
 
