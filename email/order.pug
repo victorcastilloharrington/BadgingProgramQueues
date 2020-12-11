@@ -48,8 +48,9 @@ include _header
 
           if(project.bundle)
             p.right Images Bundle
-          each extra in project.extras
-            p.right #{extra}
+          if(project.extras)
+            each extra in project.extras
+              p.right #{extra}
 
   p.orderN You can access your badge details and donwloadables by login with your badging program account details 
     a.purchase(href=accountUrl target="_blank") here
