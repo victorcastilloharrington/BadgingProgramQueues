@@ -25,8 +25,29 @@ const Email = options => {
     html
   }
 
+  mailOptions.attachments = [{
+    filename: 'fb.png',
+    path: `${__dirname}/../assets/images/fb.png`,
+    cid: 'fb'
+  },
+  {
+    filename: 'tw.png',
+    path: `${__dirname}/../assets/images/tw.png`,
+    cid: 'tw'
+  },
+  {
+    filename: 'ig.png',
+    path: `${__dirname}/../assets/images/ig.png`,
+    cid: 'ig'
+  },
+  {
+    filename: 'logo.png',
+    path: `${__dirname}/../assets/images/logo.png`,
+    cid: 'logo'
+  }]
+
   if (options.attachments)
-    mailOptions.attachments = options.attachments
+    mailOptions.attachments.push(options.attachments)
 
   //send Email
   return transport.sendMail(mailOptions)

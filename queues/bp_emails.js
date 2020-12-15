@@ -36,11 +36,11 @@ worker.on("message", function (msg, next, id) {
 
 worker.on('exceeded', function (msg) {
   logger.error(JSON.stringify("[BP EMAILS EXCEEDED]", msg.id))
-  return
+  // return
 })
 worker.on('timeout', function (msg) {
   logger.error(JSON.stringify("[BP EMAILS TIMEOUT]", msg.id, msg.rc))
-  return
+  // return
 })
 
 module.exports = worker

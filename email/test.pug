@@ -1,4 +1,7 @@
-body
-  h1 this is a test email
-  hr
-  p msg passed: #{msg}
+include _header
+  body
+    h1 this is a test email
+    hr
+    p msg passed: #{msg}
+
+  include _footer
