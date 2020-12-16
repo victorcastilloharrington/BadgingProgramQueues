@@ -3,13 +3,15 @@ include _header
 
   h3 Just one more step
 
-  p Please following the link below to complete your payment&nbsp;
+  p Please follow the link below to your badging program account to complete your payment via credit card or Paypal&nbsp;
     a.purchase(href=url) #{url}
 
-    p.prevN Lorem Ipsum dolor sit amet
-      | Lorem Ipsum dolor sit amet
-      | Lorem Ipsum dolor sit amet&nbsp;
-      a(href="mailto:info@standfortrees.org" target="_blank") info@standfortrees.org
+  if(invoice)
+    p Please find your invoice attached for which includes wire payment details if that is your preferred payment method
+      | except for invoices for Colombian Pesos (COP) which can only be settled by credit card through the link above.&nbsp;
+
+    p.prevN If you need any help please contact us at &nbsp;
+      a.purchase(href="mailto:info@standfortrees.org" target="_blank") info@standfortrees.org
 
 
   p.support Thank you for your support.
