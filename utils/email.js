@@ -22,6 +22,7 @@ const Email = options => {
     to: options.to,
     subject: options.subject,
     text: htmlToText.fromString(html),
+    cc: options.cc,
     html
   }
 
@@ -48,6 +49,7 @@ const Email = options => {
 
   if (options.attachments)
     mailOptions.attachments.push(options.attachments)
+
 
   //send Email
   return transport.sendMail(mailOptions)
