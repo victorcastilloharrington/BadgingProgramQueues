@@ -18,15 +18,18 @@ include _header
     tr
       th Total Price
       td #{price}
-    tr
-      th Tonnes Offset
-      td #{tonnes} CO2e
-    tr
-      th Issued Date
-      td #{issued}
-    tr
-      th Expiry Date
-      td #{expiry}
+    if(tonnes)
+      tr
+        th Tonnes Offset
+        td #{tonnes} CO2e
+    if(issued)
+      tr
+        th Issued Date
+        td #{issued}
+    if(expiry)
+      tr
+        th Expiry Date
+        td #{expiry}
 
   if(report)
   table.pTable
