@@ -1,19 +1,21 @@
 include _header
-  h1 Checkout link for order # #{order}
+  h1 Checkout options  &nbsp;
+    if(invoice)
+      |&amp; invoice 
+    | for order # #{order}
 
-  h3 Just one more step
-
-  p Please follow the link below to your badging program account to complete your payment via credit card or Paypal&nbsp;
+  p To complete your payment via credit card or Paypal please follow this link to your badging program account&nbsp;
     a.purchase(href=url) #{url}
+    |&nbsp;or log in as normal and navigate to my badges.
 
-  if(invoice)
-    p Please find your invoice attached for which includes wire payment details if that is your preferred payment method
-      | except for invoices for Colombian Pesos (COP) which can only be settled by credit card through the link above.&nbsp;
+  p If requested, you will also find an invoice attached. Please note the info for ACH &amp; wire transfer options are provided in invoices. If you did not request an invoice in advance, please contact us. 
 
-    p.prevN If you need any help please contact us at &nbsp;
-      a.purchase(href="mailto:info@standfortrees.org" target="_blank") info@standfortrees.org
+  p (For orders in Colombian Pesos credit card is the only payment option, but invoices can still be requested). 
 
+  p.prevN Payment must be received before your reservation ends, after which your payment links won’t function and wired funds may be returned. Your reservation ends #{expiryDate.substring(0, 10)}
+  p after which you will need to do a new order for which your reserved items can’t be guaranteed as they become available again to others. We advise making wire payments at least 3 working days before your reservation ends. 
 
-  p.support Thank you for your support.
+  p.prevN If you have any concerns or need assistance please contact  &nbsp;
+    a.purchase(href="mailto:info@standfortrees.org" target="_blank") info@standfortrees.org
 
   include _footer
