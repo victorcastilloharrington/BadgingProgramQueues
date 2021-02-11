@@ -1,16 +1,13 @@
 include _header
-  h1 Thank you 
-    if(name)
-      |#{name} 
-    |for standing for forests
+  h1 Thank you for standing for forests
 
-  p Hi there, your recent badge 
-    if(projects)
-      |reservation 
-    |order on Stand For Trees has been completed. 
+  p A 35 day reservation has been made for your recent badge order.
+  p Under separate email you should receive your contract to review and sign digitally.
+  p Following signature, your check out options, and invoice if requested, are provided to complete your order.
 
   h3 Order #: #{order}
-  h3 Date: #{date}
+  h3 Reservation Creation: #{date.substring(0, 10)}
+  h3 Reservation Expiry: #{expiryDate.substring(0, 10)}
 
 
   table.pTable
@@ -35,10 +32,5 @@ include _header
         td
           each extra in extras
             p.right #{extra}
-
-  if(projects)
-    p.orderN Note: You should receive an email with a contract to sign. Once signed you'll receive a payment link with instructions on the last steps of the process.
-
-  p.support Thank you for your support.
 
   include _footer

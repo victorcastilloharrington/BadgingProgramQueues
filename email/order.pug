@@ -1,11 +1,16 @@
 include _header
 
-  h1 Thank you 
-    if(name)
-      |#{name} 
-    |for standing for forests
+  h1 Thank you for standing for forests
 
-  p Hi there, your order on Stand For Trees has been completed.
+  p Your badge, content and reporting, as well as, other assets are all available in your user account here, or please login when convenient.
+  p Your receipt and order summary is also provided below. 
+
+  if(level > 2)
+    p The content and reporting package purchased includes a dedicated relationship manager. They will introduce themselves and reach out in the next week.
+
+  p Please contact 
+    a.purchase(href="mailto:info@standfortrees.org" target="_blank") info@standfortrees.org
+    |&nbsp;if you need assistance
 
   h3 Order #: #{order}
   h3 Date: #{date}
@@ -55,13 +60,9 @@ include _header
             each extra in project.extras
               p.right #{extra}
 
-  p.orderN You can access your badge details and donwloadables by login with your badging program account details 
-    a.purchase(href=accountUrl target="_blank") here
-
   if(discount)
     p.orderN For your purchase you're entitled to a rebate code of $#{discount.value} on your next Business Calculator Badge: 
     code #{discount.code}
 
-  p.support Thank you for your support.
 
   include _footer
