@@ -2,7 +2,7 @@ const RSMQ = require('rsmq')
 const rsmq = new RSMQ
 
 const options = {
-  to: 'victor.castillo@fulltimeforce.com',
+  to: 'victor@standfortrees.org',
   subject: 'test queue',
   template: 'test',
   templateData: {

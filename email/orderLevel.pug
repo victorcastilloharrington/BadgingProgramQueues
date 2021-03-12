@@ -1,0 +1,61 @@
+include _header
+
+  h1 A New Level 3/4 Order has been completed
+
+  h3 Order #: #{order}
+  h3 Date: #{date}
+
+  table.pTable
+    tr
+      th Company
+      td #{company}
+    tr
+      th User Name
+      td #{user}
+    tr
+      th Email
+      td #{email}
+    tr
+      th Obtained Badge
+      td #{type}
+    tr
+      th Total Price
+      td #{price}
+    if(tonnes)
+      tr
+        th Tonnes Offset
+        td #{tonnes} CO2e
+    if(issued)
+      tr
+        th Issued Date
+        td #{issued}
+    if(expiry)
+      tr
+        th Expiry Date
+        td #{expiry}
+
+  if(report)
+  table.pTable
+    tr
+      th Downloadable
+      td Detailed Emissions Report
+
+  if(projects)
+    table.pTable
+      tr
+        th Projects Supported
+        th.right Complimentary Items
+      each project in projects
+        tr
+          td 
+            p.left #{project.name}
+            p.left #{project.country}
+
+          if(project.bundle)
+            p.right Images Bundle
+          if(project.extras)
+            each extra in project.extras
+              p.right #{extra}
+
+
+  include _footer
