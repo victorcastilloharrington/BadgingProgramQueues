@@ -6,7 +6,7 @@ const options = {
   subject: 'test queue',
   template: 'test',
   templateData: {
-    msg: "Hillo Nigga"
+    msg: "Hillo Dude"
   }
 }
 

@@ -60,9 +60,14 @@ include _header
             each extra in project.extras
               p.right #{extra}
 
+
+  if(terms)
+    p.orderN As a reminder the terms and conditions for use of the report are attached to this email as a pdf.
+
   if(discount)
     p.orderN For your purchase you're entitled to a rebate code of $#{discount.value} on your next Business Calculator Badge: 
     code #{discount.code}
+
 
 
   include _footer
