@@ -18,7 +18,7 @@ const Email = options => {
 
   // Define email options
   let mailOptions = {
-    from: 'Stand For Trees Support <info@standfortrees.org>',
+    from: 'Stand For Trees Support <businessbadging@standfortrees.org>',
     to: options.to,
     subject: options.subject,
     text: htmlToText.fromString(html),
