@@ -2,7 +2,9 @@ include _header
 
   h1 Thank you for standing for forests
 
-  p Your badge, content and reporting, as well as, other assets are all available in your user account here, or please login when convenient.
+  p Your badge, content and reporting, as well as, other assets are all available in your user account 
+    a.purchase(href=accountUrl target="_blank") here
+    |, or please login when convenient.
   p Your receipt and order summary is also provided below. 
 
   if(level > 2)
@@ -66,7 +68,7 @@ include _header
 
   if(discount)
     p.orderN For your purchase you're entitled to a rebate code of $#{discount.value} on your next Business Calculator Badge: 
-    code #{discount.code}
+    p.orderN #{discount.code}
 
 
 
