@@ -39,10 +39,10 @@ include _header
         td #{expiry}
 
   if(report)
-  table.pTable
-    tr
-      th Downloadable
-      td Detailed Emissions Report
+    table.pTable
+      tr
+        th Downloadable
+        td Detailed Emissions Report
 
 
   if(projects)
@@ -67,8 +67,7 @@ include _header
     p.orderN As a reminder the terms and conditions for use of the report are attached to this email as a pdf.
 
   if(discount)
-    p.orderN For your purchase you're entitled to a rebate code of $#{discount.value} on your next Business Calculator Badge: 
-    p.orderN #{discount.code}
+    p.prevN For your purchase you're entitled to a rebate code of $#{discount.value} on your next Business Calculator Badge: #{discount.code}
 
 
 
